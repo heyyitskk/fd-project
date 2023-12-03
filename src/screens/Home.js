@@ -38,11 +38,24 @@ export default function Home() {
         {
           foodCat.length
           ? foodCat.map((data)=>{
-            return <div>{data.CategoryName}</div>
+            return<div className="row mb-3">
+               <div key={data._id} className="fs-3 m-3">
+                  {data.CategoryName}
+                </div>
+                <hr />
+                {foodItem.length
+                ?
+                foodItem.filter((item)=> item.CategoryName == data.CategoryName).map(filterItems => {
+                  return (
+                    <div key={filterItems._id} className="col-12 col-md-6 col-lg-3">
+                      <Card ></Card>
+                    </div>
+                  )
+                }): <div> No such Data found</div>}
+            </div>
           })
-          :<div>""""""</div>
+          :""
         }
-        <Card />
       </div>
       <div>
         {" "}
