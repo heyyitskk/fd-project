@@ -11,7 +11,12 @@ router.post("/createuser", [
     body('name').isLength({ min: 5 }),
     body('password', 'Incorrect Password').isLength({ min: 5 })]
     , async (req, res) => {
+        let email = req.body.email;
         const errors = validationResult(req);
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ success: false, message: 'User with this email already exists' });
+        }
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
@@ -25,7 +30,8 @@ router.post("/createuser", [
                 email: req.body.email,
                 location: req.body.location
             })
-            res.json({ success: true });
+            return res.status(400).json({ success: true, message: 'Successful! Please Log in' });
+
         }
         catch (error) {
             console.log(error)

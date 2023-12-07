@@ -58,7 +58,7 @@ export default function Card(props) {
                 <img src={props.foodItem.img} className="card-img-top" alt="..." style={{ height: "200px", objectFit: "fill" }} />
                 <div className="card-body">
                     <h5 className="card-title">{props.foodItem.name}</h5>
-                    <div className="container w-100">
+                    <div className="container w-100" style={{ padding: "0" }}>
                         <select className="m-2 h-100 bg-success rounded" onClick={handleClick} onChange={(e) => setQty(e.target.value)}>
                             {Array.from(Array(6), (e, i) => {
                                 return (

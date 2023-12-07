@@ -16,7 +16,7 @@ export default function Login() {
     console.log(json);
 
     if (!json.success) {
-      alert("Enter valid credentials")
+      alert(json.message)
     }
     if (json.success) {
       localStorage.setItem("authToken", json.authToken)
