@@ -22,6 +22,7 @@ export default function Card(props) {
         }
     }
     const handleAddToCart = async () => {
+        handleClick();
         let food = []
         for (const item of data) {
             if (item.id === props.foodItem._id) {

@@ -44,10 +44,10 @@ export default function Home() {
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
                 </div>
-                <div className="carousel-item active">
+                <div className="carousel-item">
                     <img src="https://source.unsplash.com/random/900x700/?burger" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
                 </div>
-                <div className="carousel-item">
+                <div className="carousel-item active">
                     <img src="https://source.unsplash.com/random/900x700/?pastry" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
                 </div>
                 <div className="carousel-item">
