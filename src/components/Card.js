@@ -14,7 +14,7 @@ export default function Card(props) {
     // });
     let options = props.options;
     let priceOptions = Object.keys(options);
-    let foodItem = props.item;
+    // let foodItem = props.item;
     const dispatch = useDispatchCart();
     const handleClick = () => {
         if (!localStorage.getItem("authToken")) {
@@ -38,7 +38,8 @@ export default function Card(props) {
                 return
             }
             else if (food.size !== size) {
-                await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size, img: props.ImgSrc })
+
+                await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size, img: props.foodItem.img })
                 console.log("Size different so simply ADD one more to the list")
                 return
             }
