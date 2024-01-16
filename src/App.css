@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.profile-container{
+  position: relative;
+}
+.drop-down-profile{
+  position: absolute;
+  z-index: 4;
+  bottom: -90px;
+  right: 33px;
+  background-color: rgb(31, 186, 98);
+  padding: 10px 2px;
+  border-radius: 10px;
+  color: white;
+}
+.userName{
+  padding-bottom: 5px;
+}
+.drop-down-profile.hide{
+  visibility: hidden;
+}
+.navB{
+  margin-left: 10px;
+  margin-bottom: -10px;
+}
+.navB:hover{
+  background-color: rgb(31, 186, 98);
+  border-radius: 10px;
+}

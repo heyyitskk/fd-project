@@ -30,17 +30,19 @@ export default function Card(props) {
                 break;
             }
         }
-        console.log(food)
-        console.log(new Date())
+        // console.log(food)
+        // console.log(new Date())
         if (food !== null) {
             if (food.size === size) {
                 await dispatch({ type: "UPDATE", id: props.foodItem._id, price: finalPrice, qty: qty })
+                alert("Item Updated in cart")
                 return
             }
             else if (food.size !== size) {
 
                 await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size, img: props.foodItem.img })
-                console.log("Size different so simply ADD one more to the list")
+                // console.log("Size different so simply ADD one more to the list")
+                alert("Item Added to Cart")
                 return
             }
             return

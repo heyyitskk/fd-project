@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { AccountCircleSharp } from '@material-ui/icons';
 import { useCart } from './ContextReducer';
 import Modal from '../Modal';
 import Cart from '../screens/Cart';
+function getUserName()
+{
+  return localStorage.getItem("name");
+}
 
 export default function Navbar(props) {
   const [cartView, SetCartView] = useState(false)
+  const [showProfile,setShowProfile] = useState(false);
+  const [userName ,setUserName] = useState(getUserName());
   localStorage.setItem('temp', "first")
 
-  let data = useCart();
+  useEffect(()=>{
+    setUserName(getUserName());
+    },[userName])
+  // let data = useCart();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -42,15 +52,15 @@ export default function Navbar(props) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav me-auto mb-2">
+            <ul className="navbar-nav me-auto mb-2 mt-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active fs-5" aria-current="page" to="/">
+                <Link className="nav-link active fs-5 navB" aria-current="page" to="/">
                   Home
                 </Link>
               </li>
               {(localStorage.getItem("authToken")) ?
                 <li className="nav-item">
-                  <Link className="nav-link active fs-5" aria-current="page" to="/myOrder">My Orders</Link>
+                  <Link className="nav-link active fs-5 navB" aria-current="page" to="/myOrder">My Orders</Link>
                 </li>
                 : ""
               }
@@ -63,15 +73,21 @@ export default function Navbar(props) {
                 <Link className="btn bg-white text-success mx-1" to="/createuser">Sign Up</Link>
               </div>
               :
-              <div>
-                <div className="btn bg-white text-success mx-2 " onClick={loadCart}>
+              <div className=''>
+                <button className="btn bg-white text-success mx-2 " onClick={loadCart}>
                   <Badge color="secondary" badgeContent={items.length} >
                     <ShoppingCartIcon />
                   </Badge>
                   Cart
-                </div>
+                </button>
                 {cartView ? <Modal onClose={() => SetCartView(false)}><Cart></Cart></Modal> : null}
-                <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>Logout</div>
+                  <div className="btn btn-lg profile-container" >
+                    <AccountCircleSharp fontSize="large" color="active" onClick={()=>setShowProfile(!showProfile)} />
+                    <div className={`drop-down-profile ${showProfile?'':'hide'}`}>
+                      <div className='userName'>{userName}</div>
+                      <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>Logout</div>   
+                    </div>
+                  </div>
               </div>
             }
           </div>

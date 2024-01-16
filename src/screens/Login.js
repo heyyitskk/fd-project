@@ -17,12 +17,13 @@ export default function Login() {
     console.log(json);
 
     if (!json.success) {
-      alert(json.message)
+      alert(json.errors)
     }
     if (json.success) {
       localStorage.setItem("authToken", json.authToken)
       localStorage.setItem("userEmail", credentials.email)
-      console.log(localStorage.getItem("authToken"))
+      localStorage.setItem("name",json.name);
+      // console.log(localStorage.getItem("authToken"))
       navigate("/")
     }
   }

@@ -32,7 +32,7 @@ export default function Cart() {
                 order_date: new Date().toDateString()
             })
         });
-        console.log("JSON RESPONSE:::::", response.status)
+        // console.log("JSON RESPONSE:::::", response.status)
         if (response.status === 200) {
             dispatch({ type: "DROP" })
         }
@@ -42,9 +42,9 @@ export default function Cart() {
     return (
         <div>
 
-            {console.log(data)}
+            {/* {console.log(data)} */}
             <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md' style={{ color: "white" }}>
-                <table className='table table-hover ' style={{ color: "white" }}>
+                <table className='table' style={{ color: "white" }}>
                     <thead className=' text-success fs-4'>
                         <tr>
                             <th scope='col' >#</th>
