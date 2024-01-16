@@ -64,3 +64,9 @@
   background-color: rgb(31, 186, 98);
   border-radius: 10px;
 }
+
+@media (min-width: 990px){
+  .carousel-item > img {
+    margin-top: -170px;
+  }
+}

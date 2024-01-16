@@ -69,8 +69,8 @@ export default function Navbar(props) {
 
             {(!localStorage.getItem("authToken")) ?
               <div className="d-flex">
-                <Link className="btn bg-white text-success mx-1" to="/login">Login</Link>
-                <Link className="btn bg-white text-success mx-1" to="/createuser">Sign Up</Link>
+                <Link className="btn bg-white text-success mx-2" to="/login">Login</Link>
+                <Link className="btn bg-white text-success mx-2" to="/createuser">Sign Up</Link>
               </div>
               :
               <div className=''>

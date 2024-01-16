@@ -7,22 +7,17 @@ export default function Card(props) {
     const [qty, setQty] = useState(1)
     const [size, setSize] = useState("")
     const priceRef = useRef();
-    // const [btnEnable, setBtnEnable] = useState(false);
-    // let totval = 0
-    // let price = Object.values(options).map((value) => {
-    //   return parseInt(value, 10);
-    // });
+    
     let options = props.options;
     let priceOptions = Object.keys(options);
-    // let foodItem = props.item;
     const dispatch = useDispatchCart();
     const handleClick = () => {
         if (!localStorage.getItem("authToken")) {
             navigate("/login")
+            return
         }
     }
     const handleAddToCart = async () => {
-        handleClick();
         let food = []
         for (const item of data) {
             if (item.id === props.foodItem._id) {
@@ -32,6 +27,10 @@ export default function Card(props) {
         }
         // console.log(food)
         // console.log(new Date())
+        if (!localStorage.getItem("authToken")) {
+            navigate("/login")
+            return
+        }
         if (food !== null) {
             if (food.size === size) {
                 await dispatch({ type: "UPDATE", id: props.foodItem._id, price: finalPrice, qty: qty })
